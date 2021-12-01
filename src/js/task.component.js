@@ -62,7 +62,7 @@ clearCompleted.addEventListener('click', (e) =>{
 
 filters.addEventListener('click', (e) => {
     if(!e.target.text){ return; }
-    
+
     addFilters(e.target.text.toLowerCase());
 });
 
@@ -70,20 +70,30 @@ filters.addEventListener('click', (e) => {
 const addFilters = (option) => {
     const filterOption = {
         todos:() => {
-            const completedTasks = document.querySelectorAll('.hidden');
-            completedTasks.forEach(element => {
+            const showAllTasks = document.querySelectorAll('.hidden');
+            showAllTasks.forEach(element => {
                 element.classList.toggle('hidden');
             }); 
         },
         pendientes: () => {
+            const showAllTasks = document.querySelectorAll('.hidden');
             const completedTasks = document.querySelectorAll('.completed');
+            
+            showAllTasks.forEach(element => {
+                element.classList.toggle('hidden');
+            }); 
             completedTasks.forEach(element => {
                 element.classList.toggle('hidden');
             }); 
         },
         completados: () => {
-            const completedTasks = document.querySelectorAll('.pending');
-            completedTasks.forEach(element => {
+            const showAllTasks = document.querySelectorAll('.hidden');
+            const pendingTasks = document.querySelectorAll('.pending');
+
+            showAllTasks.forEach(element => {
+                element.classList.toggle('hidden');
+            }); 
+            pendingTasks.forEach(element => {
                 element.classList.toggle('hidden');
             }); 
         },
